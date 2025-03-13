@@ -9,11 +9,12 @@ class List {
     Node* head; Node* tail;
     public:
     List(): head(nullptr), tail(nullptr){}
-    void addFront(T val){ Node* nnode = new Node(val); nnode->next=head; head=nnode; }
-    void addTail(T val){ Node* nnode = new Node(val); nnode->prev=tail; tail=nnode; }
+    void addFront(T val){ Node* nnode = new Node(val); nnode->next=head; head->prev = nnode; head=nnode; }
+    void addTail(T val){ Node* nnode = new Node(val); nnode->prev=tail; tail->next = nnode; tail=nnode; }
     T getFront(){  if(head == nullptr){ throw std::runtime_error("List is empty. Cannot get front.");} return head->val; }
     T getTail(){  if (tail == nullptr){ throw std::runtime_error("List is empty. Cannot get tail.");} return tail->val; }
-    void displayForwards(){ }
+    void displayForwards(){ while(head != nullptr){ std::cout << getFront() << " -> "; head = head->next; } std::cout << "NULL\n";}
+    void displayBackwards(){ /*Node* tmp = tail;*/ while(tail != nullptr){ std::cout << getTail() << " -> "; tail = tail->prev; } std::cout << "NULL\n";}
 };
 
 #endif
