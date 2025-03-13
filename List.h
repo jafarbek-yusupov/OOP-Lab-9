@@ -11,7 +11,9 @@ class List {
     List(): head(nullptr), tail(nullptr){}
     void addFront(T val){ Node* nnode = new Node(val); nnode->next=head; head=nnode; }
     void addTail(T val){ Node* nnode = new Node(val); nnode->prev=tail; tail=nnode; }
-
+    T getFront(){  if(head == nullptr){ throw std::runtime_error("List is empty. Cannot get front.");} return head->val; }
+    T getTail(){  if (tail == nullptr){ throw std::runtime_error("List is empty. Cannot get tail.");} return tail->val; }
+    void displayForwards(){ }
 };
 
 #endif
