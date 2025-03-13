@@ -27,13 +27,13 @@ class List {
     // Part 2
     bool isEmpty(){ return head == nullptr; }
     void removeFront(){
-        if(head==nullptr){ /*throw std::runtime_error("List is empty. Cannot remove front.");*/ std::cout << "List is empty. Cannot remove front.\n";}
+        if(head==nullptr){ /*throw std::runtime_error("List is empty. Cannot remove front.");*/ std::cout << "List is empty. Cannot remove front.\n"; return;}
         Node* tmp = head; head = head->next; head->prev = nullptr;
         if(head){ head->prev = nullptr;} else{ tail = nullptr;}
         delete tmp;
     }
     void removeTail(){
-        if(tail==nullptr){  std::cout << "List is empty. Cannot remove tail.\n";}
+        if(tail==nullptr){  std::cout << "List is empty. Cannot remove tail.\n"; return;}
         Node* tmp = tail; tail = tail->prev; tail->next = nullptr;
         if(tail){ tail->next = nullptr;} else{ head = nullptr;}
         delete tmp;
@@ -52,7 +52,7 @@ class List {
         while(cc != nullptr && i!=idx){ cc = cc->next; i++;}
         if(cc==nullptr){ if(i==idx){ addTail(val);} else{ throw std::runtime_error("cant insert there");} return;}
         Node* nnode = new Node(val); nnode->next = cc; nnode->prev = cc->prev;
-        if(cc->next){ cc->next->prev = nnode;} else{ head = nnode; /*if insert at 0 => upd head*/}
+        if(cc->next){ cc->next->prev = nnode;} else{ tail = nnode; /*if insert at 0 => upd head*/}
         cc->prev = nnode;
     }
     void removeAt(int idx) {
