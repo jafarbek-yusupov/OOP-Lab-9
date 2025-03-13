@@ -3,4 +3,5 @@ project(Lab9)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Lab9 main.cpp)
+add_executable(Lab9 main.cpp
+        List.h)
